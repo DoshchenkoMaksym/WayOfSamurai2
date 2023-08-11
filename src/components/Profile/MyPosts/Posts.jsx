@@ -10,8 +10,8 @@ export const Posts = () => {
                 <button>Add post</button>
             </div>
             <div>
-                <Post message="First message"/>
-                <Post message="Second message"/>
+                <Post message="First message" likesCount='26'/>
+                <Post message="Second message" likesCount='0'/>
             </div>
         </div>
     )
