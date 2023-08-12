@@ -15,7 +15,7 @@ export const Navbar = () => {
                 <NavLink to='/dialogs' className={({ isActive }) =>
                     isActive ? `${navbar.active}` : `${navbar.item}`
                 }>
-                    Massages
+                    Messages
                 </NavLink>
             </div>
             <div className={navbar.item}>

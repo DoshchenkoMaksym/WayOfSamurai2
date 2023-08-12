@@ -2,16 +2,19 @@ import { Post } from './Post/Post'
 import posts from './Posts.module.css'
 
 
-export const Posts = () => {
+export const Posts = (props) => {
     return (
-        <div>My posts
+        <div className={posts.content}>My posts
             <div>
-                <textarea></textarea>
-                <button>Add post</button>
+                <div>
+                    <textarea></textarea>
+                </div>
+                <div>
+                    <button>Add post</button>
+                </div>
             </div>
-            <div>
-                <Post message="First message" likesCount='26'/>
-                <Post message="Second message" likesCount='0'/>
+            <div className={posts.posts}>
+                {props.postsData.map(obj => <Post message={obj.message} likesCount={obj.likesCount} />)}
             </div>
         </div>
     )
