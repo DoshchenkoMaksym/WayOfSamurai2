@@ -8,13 +8,14 @@ import { News } from './components/News/News';
 import { Music } from './components/Music/Music';
 import { Settings } from './components/Settings/Settings';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
 const App = (props) => {
 
   return (
     <BrowserRouter>
       <div className='app-wrapper'>
         <Header />
-        <Navbar />
+        <Navbar state={props.state.sideBar}/>
         <div className='app-wrapper-content'>
           <Routes>
             <Route path="/dialogs/*" element={<Dialogs

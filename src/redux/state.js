@@ -6,7 +6,7 @@ export let state = {
             { id: 3, message: 'fourths message', likesCount: 34 },
             { id: 4, message: 'ahahaha', likesCount: 3 },
         ],
-       
+
     },
     messagesPage: {
         dialogsData: [
@@ -25,6 +25,25 @@ export let state = {
             { id: 5, message: 'Yo' },
             { id: 6, message: 'Yo' }
         ],
+    },
+    sideBar: {
+        friendsData: [
+            {
+                id: 1,
+                name: 'Andrew',
+                img: 'https://w7.pngwing.com/pngs/862/646/png-transparent-beard-hipster-male-man-avatars-xmas-giveaway-icon-thumbnail.png'
+            },
+            {
+                id: 2,
+                name: 'Sasha',
+                img: 'https://w7.pngwing.com/pngs/420/567/png-transparent-avatar-male-man-portrait-avatars-xmas-giveaway-icon-thumbnail.png'
+            },
+            {
+                id: 2,
+                name: 'Sveta',
+                img: 'https://w7.pngwing.com/pngs/224/408/png-transparent-avatar-child-girl-kid-avatars-xmas-giveaway-icon.png'
+            }
+        ]
     }
 
 }
