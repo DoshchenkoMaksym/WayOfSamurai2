@@ -1,14 +1,14 @@
 import { Posts } from './MyPosts/Posts'
-import profile from './Profile.module.css'
 import { ProfileInfo } from './ProfileInfo/ProfileInfo'
 
 
 export const Profile = (props) => {
-
+    debugger
     return (
         <div>
             <ProfileInfo />
-            <Posts postsData={props.state.postsData} />
+            <Posts 
+            state={props} />
         </div>
     )
 }
