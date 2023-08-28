@@ -1,6 +1,7 @@
 import { Post } from './Post/Post'
 import posts from './Posts.module.css'
 import React from 'react';
+import { addPostActionCreator, newTextActionCreator } from '../../../redux/state';
 
 export const Posts = (props) => {
     
@@ -8,16 +9,15 @@ export const Posts = (props) => {
 
     let addPost = () => {
 
-        props.addPostFn();
+        props.dispatch(addPostActionCreator());
 
-        newPostElement.current.value = '';
     };
 
-    let postChange = () => {
+    let postChange = (e) => {
+        
+        let text = e.target.value;
 
-        let text = newPostElement.current.value;
-
-        props.newPostTextFn(text)
+        props.dispatch(newTextActionCreator(text))
 
     };
 
@@ -28,7 +28,7 @@ export const Posts = (props) => {
                 <div>
                     <textarea
                         ref={newPostElement}
-                        value={props.newPostText}
+                        value={props.profilePage.newPostText}
                         onChange={postChange} />
                 </div>
                 <div>
@@ -36,7 +36,7 @@ export const Posts = (props) => {
                 </div>
             </div>
             <div className={posts.posts}>
-                {props.postsData.map(obj => <Post message={obj.message} likesCount={obj.likesCount} />)}
+                {props.profilePage.postsData.map(obj => <Post message={obj.message} likesCount={obj.likesCount} />)}
             </div>
         </div>
     )

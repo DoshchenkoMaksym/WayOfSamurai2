@@ -3,12 +3,14 @@ import { ProfileInfo } from './ProfileInfo/ProfileInfo'
 
 
 export const Profile = (props) => {
-    debugger
+    
     return (
         <div>
             <ProfileInfo />
-            <Posts 
-            state={props} />
+            <Posts
+                profilePage={props.state}
+                dispatch={props.dispatch}
+                 />
         </div>
     )
 }

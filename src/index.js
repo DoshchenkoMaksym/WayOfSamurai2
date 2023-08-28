@@ -11,13 +11,15 @@ let rerenderEntireTree = (state) => {
 
   root.render(
     <React.StrictMode>
-      <App store={store}/>
+      <App
+        state={state}
+        dispatch={store.dispatch.bind(store)}/>
     </React.StrictMode>
   )
 
 };
 
-rerenderEntireTree(store.state)
+rerenderEntireTree(store.getState())
 store.subscribe(rerenderEntireTree)
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
