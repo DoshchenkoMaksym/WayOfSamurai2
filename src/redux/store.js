@@ -1,10 +1,6 @@
-const ADD_POST = 'ADD-POST';
+import dialogsReducer from "./dialogsReducer";
+import profileReducer from "./profileReducer";
 
-const NEW_POST_TEXT = 'NEW-POST-TEXT';
-
-const NEW_MESSAGE_TEXT = 'NEW_MESSAGE_TEXT';
-
-const SEND_MESSAGE = 'SEND_MESSAGE';
 
 export let store = {
 
@@ -57,9 +53,9 @@ export let store = {
             ]
         }
     },
-    callSubscriber() {
-
-        return null
+    _callSubscriber() {
+        
+        console.log('State changed');
 
     },
 
@@ -68,60 +64,21 @@ export let store = {
         return this._state
 
     },
+    
     subscribe(observer) {
-
+        
         this._callSubscriber = observer;
-
+    
     },
 
 
     dispatch(action) {
 
-        if (action.type === ADD_POST) {
-            
-            let newPost = {
-                id: 5,
-                message: this._state.profilePage.newPostText,
-                likesCount: 0
-            };
-
-            this._state.profilePage.postsData.push(newPost);
-
-            this._state.profilePage.newPostText = '';
-
-            this._callSubscriber(this._state);
-
-        } else if (action.type === NEW_POST_TEXT) {
-
-            this._state.profilePage.newPostText = action.newText;
-
-            this._callSubscriber(this._state);
-
-        } else if (action.type === NEW_MESSAGE_TEXT) {
-
-            this._state.messagesPage.newMessageText = action.newMessage;
-
-            this._callSubscriber(this._state);
-            
-        } else if (action.type === SEND_MESSAGE) {
-            
-            let newMessage = {
-                id: 7,
-                message: this._state.messagesPage.newMessageText
-            };
-            
-            this._state.messagesPage.messagesData.push(newMessage);
-            this._state.messagesPage.newMessageText = '';
-            this._callSubscriber(this._state);
-            
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.messagesPage = dialogsReducer(this._state.messagesPage, action)
+        this._callSubscriber(this._state);
     }
 }
 
-export const addPostActionCreator = () => ({type: ADD_POST});
 
-export const newTextActionCreator = (text) => ({ type: NEW_POST_TEXT, newText: text });
 
-export const newMessageActionCreator = (message) => ({ type: NEW_MESSAGE_TEXT, newMessage: message })
-
-export const addMessageActionCreator = () => ({ type: SEND_MESSAGE })
