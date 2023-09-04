@@ -40,7 +40,7 @@ export const Navbar = (props) => {
                     Settings
                 </NavLink>
             </div>
-            <Friends state={props.state}/>
+            <Friends state={props.store.getState()}/>
         </nav>
     )
 }

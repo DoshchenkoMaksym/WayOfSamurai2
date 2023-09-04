@@ -1,4 +1,4 @@
-import { Posts } from './MyPosts/Posts'
+import { PostsContainer } from './MyPosts/PostsContainer'
 import { ProfileInfo } from './ProfileInfo/ProfileInfo'
 
 
@@ -7,10 +7,8 @@ export const Profile = (props) => {
     return (
         <div>
             <ProfileInfo />
-            <Posts
-                profilePage={props.state}
-                dispatch={props.dispatch}
-                 />
+            <PostsContainer
+                store={props.store}/>
         </div>
     )
 }
