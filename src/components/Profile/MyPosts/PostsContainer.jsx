@@ -9,7 +9,7 @@ let mapDispatchToProps = (dispatch) => {
             let action = newTextActionCreator(text);
             
             dispatch(action);
-            debugger
+            
         },
         addPost: () => {
             let action = addPostActionCreator()
