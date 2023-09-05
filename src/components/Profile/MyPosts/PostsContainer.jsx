@@ -1,33 +1,28 @@
-import React, { useContext } from 'react';
 import { addPostActionCreator, newTextActionCreator } from '../../../redux/profileReducer';
 import { Posts } from './Posts';
-import { StoreContext } from '../../../storeContext';
+import { connect } from 'react-redux';
 
-export const PostsContainer = () => {
-    let store = useContext(StoreContext);
+let mapDispatchToProps = (dispatch) => {
+    return {
+        updateNewPostText: (text) => {
+            
+            let action = newTextActionCreator(text);
+            
+            dispatch(action);
+            debugger
+        },
+        addPost: () => {
+            let action = addPostActionCreator()
+            dispatch(action);
+            
+        }
+    }
+};
 
-    let state = store.getState();
-
-    let addPost = () => {
-
-        let action = addPostActionCreator();
-
-        store.dispatch(action);
-
-    };
-
-    let postChange = (text) => {
-
-        let action = newTextActionCreator(text);
-
-        store.dispatch(action)
-
-    };
-    return (
-        <Posts
-            updateNewPostText={postChange}
-            addPost={addPost}
-            posts={state.profilePage.postsData}
-            newPostText={state.profilePage.newPostText} />
-    )
+let mapStateToProps = (state) => {
+    return {
+        posts: state.profilePage.postsData,
+        newPostText: state.profilePage.newPostText,
+    }
 }
+export const PostsContainer = connect(mapStateToProps, mapDispatchToProps)(Posts);

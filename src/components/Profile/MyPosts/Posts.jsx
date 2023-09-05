@@ -3,12 +3,13 @@ import posts from './Posts.module.css'
 import React from 'react';
 
 export const Posts = (props) => {
-
+ 
     let onAddPost = () => {
         props.addPost()
     };
 
     let onPostChange = (e) => {
+        
         let text = e.target.value;
         props.updateNewPostText(text)
     };

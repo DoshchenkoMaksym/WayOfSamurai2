@@ -1,7 +1,7 @@
 
 import './App.css';
 import { Header } from './components/Header/Header';
-import { Navbar } from './components/Navbar/Navbar';
+import { NavbarContainer } from './components/Navbar/NavbarContainer';
 import { Profile } from './components/Profile/Profile';
 import { DialogsContainer } from './components/Dialogs/DialogContainer';
 import { News } from './components/News/News';
@@ -16,7 +16,7 @@ const App = (props) => {
     <BrowserRouter>
       <div className='app-wrapper'>
         <Header />
-        <Navbar/>
+        <NavbarContainer/>
         <div className='app-wrapper-content'>
           <Routes>
             <Route path="/dialogs/*" element={<DialogsContainer
