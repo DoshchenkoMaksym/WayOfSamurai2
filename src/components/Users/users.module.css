@@ -1,0 +1,39 @@
+.userContainer {
+    display:grid;
+    grid-template-columns: 1fr 9fr;
+}
+
+.userAvatar {
+    width: 5em;
+    height: 5em;
+    border-radius: 40px;
+}
+
+.container {
+    padding: 20px;
+}
+
+.usersContainer {
+    padding: 20px;
+}
+
+.userInfo {
+    max-width: 400px;
+    max-height: 75px;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    border-radius: 10px
+}
+
+.leftSide {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.rightSide {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}

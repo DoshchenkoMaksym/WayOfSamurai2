@@ -21,6 +21,13 @@ export const Navbar = (props) => {
                 </NavLink>
             </div>
             <div className={navbar.item}>
+                <NavLink to='/users' className={({ isActive }) =>
+                    isActive ? `${navbar.active}` : `${navbar.item}`
+                }>
+                    Find Users
+                </NavLink>
+            </div>
+            <div className={navbar.item}>
                 <NavLink to='/news' className={({ isActive }) =>
                     isActive ? `${navbar.active}` : `${navbar.item}`
                 }>
