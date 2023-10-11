@@ -3,10 +3,11 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const TOTAL_COUNT = 'TOTAL_COUNT';
+const TOGGLE_FETCHING = 'TOGGLE_FETCHING';
 
 const initialState = {
-    usersData: 
-    [
+    usersData:
+        [
             // {
             //     id: 1,
             //     isFollow: true,
@@ -39,21 +40,22 @@ const initialState = {
             //     status: 'Want to help you crate a Video Production',
             //     location: { country: 'USA', city: 'Texac' }
             // },
-            
-    ],
+
+        ],
     pageSize: 4,
     totalUsersCount: null,
     currentPage: 2,
+    isFetching: false
 };
 
 export const usersReducer = (state = initialState, action) => {
-    
+
     switch (action.type) {
         case FOLLOW:
 
             return {
                 ...state,
-                usersData: state.usersData.map(user => {
+                usersData: state.usersData.map( user => {
 
                     if (user.id === action.userId) {
                         return { ...user, followed: true }
@@ -69,16 +71,17 @@ export const usersReducer = (state = initialState, action) => {
 
                     if (user.id === action.userId) {
                         return { ...user, followed: false }
-                    }
-                    return user
+                    };
+
+                    return user;
                 })
             }
         case SET_USERS: {
-            
+
             return {
                 ...state,
                 usersData: action.users,
-            }
+            };
 
         }
         case TOTAL_COUNT: {
@@ -86,7 +89,7 @@ export const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 totalUsersCount: action.totalCount,
-            }
+            };
 
         }
         case SET_CURRENT_PAGE: {
@@ -94,7 +97,15 @@ export const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 currentPage: action.pageId,
-            }
+            };
+
+        }
+        case TOGGLE_FETCHING: {
+
+            return {
+                ...state,
+                isFetching: action.state,
+            };
 
         }
         default:
@@ -102,12 +113,16 @@ export const usersReducer = (state = initialState, action) => {
     }
 
 };
-export const setUsersAC = (users, totalCount) => ({ type: SET_USERS, users });
+export const setUsers = (users) => ({ type: SET_USERS, users });
 
-export const followAC = (userId) => ({ type: FOLLOW, userId });
+export const follow = (userId) => ({ type: FOLLOW, userId });
 
-export const unFollowAC = (userId) => ({ type: UNFOLLOW, userId });
+export const unFollow = (userId) => ({ type: UNFOLLOW, userId });
 
-export const setCurrentPageAC = (pageId) => ({type: SET_CURRENT_PAGE, pageId });
+export const setCurrentPage = (pageId) => ({ type: SET_CURRENT_PAGE, pageId });
 
-export const totalCountAC = (totalCount) => ({type: TOTAL_COUNT, totalCount})
+export const totalCount = (totalCount) => ({ type: TOTAL_COUNT, totalCount });
+
+export const isFetching = (state) => ({ type: TOGGLE_FETCHING, state });
+
+
